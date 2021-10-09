@@ -1,0 +1,27 @@
+package com.example.social.daos
+
+import com.example.social.model.User
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
+class UserDao {
+    private val db = FirebaseFirestore.getInstance()
+    private val usercollection = db.collection("users")
+
+    fun addUser(user : User?){
+        user?.let{
+            GlobalScope.launch(Dispatchers.IO) {
+                usercollection.document(user.uid).set(it)
+            }
+        }
+    }
+
+    fun getuserbyuid(uid : String) : Task<DocumentSnapshot>{
+
+        return usercollection.document(uid).get()
+    }
+}
