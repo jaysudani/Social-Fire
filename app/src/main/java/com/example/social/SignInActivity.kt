@@ -40,7 +40,7 @@ class SignInActivity : AppCompatActivity() {
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken("1025922383011-jpn82pef7vv885a5oi88r0hd4d3vm5t4.apps.googleusercontent.com")
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
@@ -69,6 +69,7 @@ class SignInActivity : AppCompatActivity() {
             val signInIntent = googleSignInClient.signInIntent
             //startActivityForResult(signInIntent, RC_SIGN_IN)
             getResult.launch(signInIntent)
+            Log.d("yes ","1")
 
         }
 

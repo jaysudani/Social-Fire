@@ -1,5 +1,6 @@
 package com.example.social
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -24,5 +25,12 @@ class CreatePostActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    override fun onBackPressed() {
+
+        val intent= Intent(this,MainActivity::class.java)
+        startActivity(intent)
+
     }
 }
